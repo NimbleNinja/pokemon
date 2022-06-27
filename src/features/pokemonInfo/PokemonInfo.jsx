@@ -5,6 +5,7 @@ import {
   CardHeader,
   Chip,
   Pagination,
+  Paper,
   Stack,
   Table,
   TableBody,
@@ -34,7 +35,11 @@ const PokemonInfo = () => {
   const movesToRender = moves.slice(startIndex, endIndex);
 
   if (!name) {
-    return null;
+    return (
+      <Paper sx={{ p: 1 }}>
+        <Typography variant="h6">Choise pokemon</Typography>
+      </Paper>
+    );
   }
 
   return (
@@ -64,7 +69,10 @@ const PokemonInfo = () => {
           <TableBody>
             {movesToRender.map(({ move }) => {
               return (
-                <TableRow key={move.url}>
+                <TableRow
+                  key={move.url}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
                   <TableCell>{move.name}</TableCell>
                 </TableRow>
               );

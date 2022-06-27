@@ -10,6 +10,7 @@ import { Box } from '@mui/system';
 import PokemonInfo from './features/pokemonInfo/PokemonInfo';
 import PokemonList from './features/pokemonsList/PokemonList';
 import './styles/App.scss';
+import SearchPokemon from './features/search/SearchPokemon';
 
 function App() {
   return (
@@ -25,13 +26,16 @@ function App() {
           <Typography variant="h4">Pokemon</Typography>
         </Toolbar>
       </AppBar>
-      <Container maxWidth="lg" sx={{ pt: 2, pb: 2 }}>
+      <Container maxWidth="lg" sx={{ pt: 1, pb: 2 }}>
         <Box>
           <Grid container spacing={1} direction={{ xs: 'column', sm: 'row' }}>
-            <Grid item xs={4}>
+            <Grid item xs={12}>
+              <SearchPokemon />
+            </Grid>
+            <Grid item xs={5}>
               <PokemonList />
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={7}>
               <PokemonInfo />
             </Grid>
           </Grid>

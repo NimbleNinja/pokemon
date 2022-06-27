@@ -3,11 +3,18 @@ import {
   CHANGE_PAGE,
   GET_POKEMON_BY_NAME,
   SET_POKEMON_PAGE,
+  SET_TYPES,
+  SET_CURRENT_TYPE,
+  SET_TOTAL,
 } from './pokemon.actions';
 
 const initialState = {
-  currentPage: 1,
   pokemons: [],
+  currentPage: 1,
+  rowsPerPage: 10,
+  total: 0,
+  types: [],
+  currentType: '',
   pokemon: {
     currentPage: 1,
     rowsPerPage: 10,
@@ -24,6 +31,20 @@ export const pokemonsReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemons: [...action.payload.pokemonsList],
+      };
+    }
+
+    case SET_TYPES: {
+      return {
+        ...state,
+        types: [...action.payload.types],
+      };
+    }
+
+    case SET_CURRENT_TYPE: {
+      return {
+        ...state,
+        currentType: action.payload.type,
       };
     }
 
@@ -46,6 +67,13 @@ export const pokemonsReducer = (state = initialState, action) => {
       return {
         ...state,
         currentPage: action.payload.currentPage,
+      };
+    }
+
+    case SET_TOTAL: {
+      return {
+        ...state,
+        total: Math.ceil(action.payload.total / 10),
       };
     }
 
