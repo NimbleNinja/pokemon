@@ -1,6 +1,6 @@
 # Pokemo project with POKEAPI
 
-Current project version: [Netlify Link](https://62b6e72e6d2aa160c10cb353--rad-croissant-ff1642.netlify.app/).
+Current project version: [Netlify Link](https://rad-croissant-ff1642.netlify.app/).
 
 #### Tech stack:
 
