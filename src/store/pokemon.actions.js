@@ -93,6 +93,14 @@ export const initAction = () => {
 
 export function fetchPokemons(page, type) {
   return function (dispatch, useState) {
+    if (!type) {
+      getPokemons(page).then(pokemons => {
+        dispatch(setPokemonsAction(pokemons.results));
+        dispatch(setPageAction(page));
+        dispatch(setTotalPokemons(pokemons.count));
+      });
+    }
+
     if (type === useState().currentType) {
       dispatch(setPageAction(page));
       return;
@@ -109,12 +117,6 @@ export function fetchPokemons(page, type) {
         dispatch(setPokemonsAction(pokemonsList));
         dispatch(setPageAction(page));
         dispatch(setTotalPokemons(data.pokemon.length));
-      });
-    } else {
-      getPokemons(page).then(pokemons => {
-        dispatch(setPokemonsAction(pokemons.results));
-        dispatch(setPageAction(page));
-        dispatch(setTotalPokemons(pokemons.count));
       });
     }
   };
